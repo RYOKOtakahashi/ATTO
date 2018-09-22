@@ -1,0 +1,59 @@
+<div> <%= link_to "終了", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div>
+
+<%= form_for(@item) do |f| %>
+	<table>
+		<tbody>
+			<tr>
+				<th>カテゴリー</th>
+				<th>サブカテゴリー</th>
+				<th>アイテム名</th>
+				<th>数量</th>
+				<th>単位</th>
+				<th>価格</th>
+				<th>重量</th>
+				<th>期限</th>
+				<th>メモ</th>
+			</tr>
+				<td> <%= f.text_area :category %> </td>
+				<td> <%= f.text_area :subcategory %> </td>
+				<td> <%= f.text_area :item_name %> </td>
+				<td> <%= f.text_area :item_quantity %> </td>
+				<td> <%= f.text_area :unit %> </td>
+				<td> <%= f.text_area :price %> </td>
+				<td> <%= f.text_area :weight %> </td>
+				<td> <%= f.text_area :deadline %> </td>
+				<td> <%= f.text_area :item_memo_one %> </td>
+				<div> <%= f.submit '登録' %> </div>
+		</tbody>
+	</table>
+<% end %>
+
+
+<% @items.each do |item| %>
+	<table>
+		<tbody>
+			<tr>
+				<th>カテゴリー</th>
+				<th>サブカテゴリー</th>
+				<th>アイテム名</th>
+				<th>数量</th>
+				<th>単位</th>
+				<th>価格</th>
+				<th>重量</th>
+				<th>期限</th>
+				<th>メモ</th>
+			</tr>
+
+	    <td> <%= item.category %> </td>
+	    <td> <%= item.subcategory %> </td>
+			<td> <%= item.item_name %> </td>
+			<td> <%= item.item_quantity %> </td>
+			<td> <%= item.unit %> </td>
+			<td> <%= item.price %> </td>
+			<td> <%= item.weight %> </td>
+			<td> <%= item.deadline %> </td>
+			<td> <%= item.item_memo_one %> </td>
+			<%#= link_to "削除", destroy_item_path(@items.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+		</tbody>
+	</table>
+<% end %>
