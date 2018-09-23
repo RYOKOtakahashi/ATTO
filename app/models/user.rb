@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items, dependent: :destroy
+  accepts_nested_attributes_for :items, allow_destroy: true
   
   validates :name, presence: true
   validates :encrypted_password, presence: true, uniqueness: true, length: { minimum: 4 }

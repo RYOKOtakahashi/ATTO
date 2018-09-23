@@ -2,13 +2,13 @@ class ItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-		@item.user_id = current_user.id
+		@item.user_id = current_user.id #userの存在しないdrawerができないよう、save前にuserを保存する
 		@item.save
 		redirect_to user_path(current_user.id)
 	end
 
 	def destroy
-		item = Item.find(params[:id])
+    item = Item.find(params[:id])
     item.destroy
     redirect_to user_path(current_user.id)
 	end

@@ -62,4 +62,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+# dynamic form
 gem 'cocoon'
+
+# jQuery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'

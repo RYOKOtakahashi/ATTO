@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+		<div id="items">
+			<%= f.fields_for :items do |item| %>
+				<%= render 'item_fields', f: item %>
+			<% end %>
+			<div class="field">
+				<%= link_to_add_association 'add item', f, :items %>
+			</div>
+		</div>
+	<%= f.submit %>
+<% end %>
