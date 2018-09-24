@@ -1,3 +1,21 @@
+GIT
+  remote: https://github.com/refile/refile-mini_magick.git
+  revision: 466e30cf5878844b0e0bc4588f766bb18dabdd2b
+  specs:
+    refile-mini_magick (0.2.0)
+      image_processing (~> 1.1)
+      mini_magick (~> 4.0)
+      refile (~> 0.6)
+
+GIT
+  remote: https://github.com/refile/refile.git
+  revision: 47778bdfceb81dc34f348a050232e7ab70a85e44
+  specs:
+    refile (0.6.2)
+      mime-types
+      rest-client (>= 1.8, < 3.0)
+      sinatra (>= 2.0.0, <= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,6 +105,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -96,8 +116,13 @@ GEM
     hirb-unicode (0.0.5)
       hirb (~> 0.5)
       unicode-display_width (~> 0.1.1)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    image_processing (1.7.0)
+      mini_magick (~> 4.0)
+      ruby-vips (>= 2.0.13, < 3)
     io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -120,12 +145,18 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
+    mini_magick (4.9.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    mustermann (1.0.3)
+    netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -144,6 +175,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
+    rack-protection (2.0.4)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -182,6 +215,12 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    ruby-vips (2.0.13)
+      ffi (~> 1.9)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.6.0)
@@ -198,6 +237,11 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    sinatra (2.0.4)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.4)
+      tilt (~> 2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -221,6 +265,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     unicode-display_width (0.1.1)
     warden (1.2.7)
       rack (>= 1.0)
@@ -260,6 +307,8 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.1)
   ransack
+  refile!
+  refile-mini_magick!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

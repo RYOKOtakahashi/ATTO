@@ -63,6 +63,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+# image
+gem "refile", require: "refile/rails", github: 'refile/refile'
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+
 group :development, :test do
   # debug
   gem 'pry-rails'
