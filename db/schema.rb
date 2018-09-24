@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_073314) do
+ActiveRecord::Schema.define(version: 2018_09_24_091610) do
 
   create_table "items", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_073314) do
     t.float "price"
     t.integer "weight"
     t.text "item_memo_one"
-    t.datetime "deadline"
+    t.date "deadline"
     t.string "unit"
     t.string "category"
     t.string "subcategory"
