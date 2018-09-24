@@ -63,8 +63,24 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+group :development, :test do
+  # debug
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  # hirb: install、.pryrcファイル作成、rails c起動してHirb.enable
+  gem 'hirb'
+  gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
+end
+
+# search
+gem 'ransack'
+
 # dynamic form
 gem 'cocoon'
+
+# Bootstrap: assetsの拡張子、@import、sprockets
+gem 'bootstrap-sass'
 
 # jQuery
 gem 'jquery-rails'
