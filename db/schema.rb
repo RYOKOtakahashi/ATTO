@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_104310) do
+ActiveRecord::Schema.define(version: 2018_09_24_073314) do
 
   create_table "items", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "item_name", null: false
-    t.integer "item_quantity", default: 1
-    t.integer "price"
+    t.float "item_quantity", default: 1.0
+    t.float "price"
     t.integer "weight"
     t.text "item_memo_one"
     t.datetime "deadline"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_104310) do
     t.text "item_memo_two"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "price_unit"
     t.index ["item_name"], name: "index_items_on_item_name"
   end
 
