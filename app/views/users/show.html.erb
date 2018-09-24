@@ -40,7 +40,7 @@
 				<th> 数量の単位 </th>
 				<th> 価格 </th>
 				<th> 価格の単位 </th>
-				<th> 単価 </th>
+				<th> 単価(価格/数量) </th>
 				<th> 重量(g) </th>
 				<th> 期限 </th>
 				<th> メモ </th>
@@ -56,10 +56,25 @@
 						<td> <%= item.unit %> </td>
 						<td> <%= item.price %> </td>
 						<td> <%= item.price_unit %> </td>
-						<td> 価格/数量 </td>
+
+						<td>
+							<% if item.price.nil? %>
+								<%= "" %>
+							<% else %>
+								<%= (item.price / item.item_quantity).round(2) %>
+							<% end %>
+						</td>
+
 						<td> <%= item.weight %> </td>
-						<td> <%#= item.deadline.strftime('%Y/%m/%-d (%a)') %> </td>
-						<td> <%= item.deadline %> </td>
+
+						<td>
+							<% if item.deadline.nil? %>
+								<%= "" %>
+							<% else %>
+								<%= item.deadline.strftime('%Y/%m/%-d (%a)') %>
+							<% end %>
+						</td>
+
 						<td> <%= item.item_memo_one %> </td>
 						<td> <%= link_to '編集', edit_item_path(item) %> </td>
 						<!-- <td> <%#= link_to '編集', item_path(item) %> </td> -->
