@@ -1,9 +1,72 @@
-<div> <%= link_to "終了", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div>
+	<div class="col-md-12">
+		<%= form_for(@item) do |f| %>
+				<table>
+					<tbody>
+						<tr>
+							<th> カテゴリー </th>
+							<th> サブカテゴリー </th>
+							<th> アイテム名 </th>
+							<th> 数量 </th>
+							<th> 数量の単位 </th>
+							<th> 価格 </th>
+							<th> 価格の単位 </th>
+							<th> 重量(g) </th>
+							<th> 期限 </th>
+							<th> メモ </th>
+						</tr>
+							<td> <%= f.text_area :category, size: "13x1" %> </td>
+							<td> <%= f.text_area :subcategory, size: "13x1" %> </td>
+							<td> <%= f.text_area :item_name, size: "13x1" %> </td>
+							<td> <%= f.text_area :item_quantity, size: "13x1" %> </td>
+							<td> <%= f.text_area :unit, size: "13x1" %> </td>
+							<td> <%= f.text_area :price, size: "13x1" %> </td>
+							<td> <%= f.text_area :price_unit, size: "13x1" %> </td>
+							<td> <%= f.text_area :weight, size: "13x1" %> </td>
+							<td> <%= f.text_area :deadline, size: "13x1" %> </td>
+							<td> <%= f.text_area :item_memo_one, size: "11x1" %> </td>
+					</tbody>
+				</table>
+			<div> <%= f.submit '登録' %> </div>
+		<% end %>
+	</div>
 
-	<%= form_for(@item) do |f| %>
-			<table>
-				<tbody>
-					<tr>
+
+	<script>
+		jQuery(function($){
+	    $('.tabcontent > div').hide();
+
+	    $('.tabnav a').click(function () {
+	    	$('.tabcontent > div').hide().filter(this.hash).fadeIn();
+
+	    	$('.tabnav a').removeClass('active');
+	    	$(this).addClass('active');
+
+	    	return false;
+	    }).filter(':eq(0)').click();
+		});
+	</script>
+
+
+	<div class="col-md-11">
+		<ul class="tabnav">
+	    <li>
+	    	<a href="#tab01">
+	    		<%= @user.name %> のタブ
+	    	</a>
+	    </li>
+	    <li>
+	    	<a href="#tab02">
+	    		メニュー
+	    	</a>
+	    </li>
+		</ul>
+
+		<div class="tabcontent">
+	    <div id="tab01">
+	    	<table class="table table-hover">
+					<thead class="item_thead">
+						<!-- <th> ☑ </th> -->
+						<th> ☆ </th>
 						<th> カテゴリー </th>
 						<th> サブカテゴリー </th>
 						<th> アイテム名 </th>
@@ -11,53 +74,74 @@
 						<th> 数量の単位 </th>
 						<th> 価格 </th>
 						<th> 価格の単位 </th>
+						<th> 単価(価格/数量) </th>
 						<th> 重量(g) </th>
 						<th> 期限 </th>
 						<th> メモ </th>
-					</tr>
-						<td> <%= f.text_area :category %> </td>
-						<td> <%= f.text_area :subcategory %> </td>
-						<td> <%= f.text_area :item_name %> </td>
-						<td> <%= f.text_area :item_quantity %> </td>
-						<td> <%= f.text_area :unit %> </td>
-						<td> <%= f.text_area :price %> </td>
-						<td> <%= f.text_area :price_unit %> </td>
-						<td> <%= f.text_area :weight %> </td>
-						<td> <%= f.text_area :deadline %> </td>
-						<td> <%= f.text_area :item_memo_one %> </td>
-				</tbody>
-			</table>
-		<div> <%= f.submit '登録' %> </div>
-	<% end %>
+					</thead>
+					<tbody class="item_tbody">
+						<% @items.each do |item| %>
+							<tr>
+								<!-- <td> <%#= check_box_tag :item_name %> </td> -->
 
-<script>
-jQuery(function($){
-    $('.tabcontent > div').hide();
- 
-    $('.tabnav a').click(function () {
-        $('.tabcontent > div').hide().filter(this.hash).fadeIn();
- 
-        $('.tabnav a').removeClass('active');
-        $(this).addClass('active');
- 
-        return false;
-    }).filter(':eq(0)').click();
-});
-</script>
+								<td>
+									<% if item.starred_by?(current_user) %>
+								    <%= link_to item_stars_path(item), method: :delete do %>
+							      <p class="glyphicon glyphicon-star" aria-hidden="true" style="color: fuchsia;"></p>
+							      <!-- <p class="fa fa-heart" aria-hidden="true" style="color: red;"></p> -->
+							    <% end %>
+									<% else %>
+								    <%= link_to item_stars_path(item), method: :post do %>
+							      <p class="glyphicon glyphicon-star-empty" aria-hidden="true"></p>
+								    <% end %>
+									<% end %>
+								</td>
 
-<ul class="tabnav">
-    <li><a href="#tab01">メニュー1</a></li>
-    <li><a href="#tab02">メニュー2</a></li>
-</ul>
-<div class="tabcontent">
-    <div id="tab01">タブ1の内容</div>
-    <div id="tab02">タブ2の内容</div>
-</div>
+								<td> <%= item.category %> </td>
+								<td> <%= item.subcategory %> </td>
+								<td> <%= item.item_name %> </td>
+								<td> <%= item.item_quantity %> </td>
+								<td> <%= item.unit %> </td>
+								<td> <%= item.price %> </td>
+								<td> <%= item.price_unit %> </td>
+
+								<td>
+									<% if item.price.nil? %>
+										<%= "" %>
+									<% else %>
+										<%= (item.price / item.item_quantity).round(2) %>
+									<% end %>
+								</td>
+
+								<td> <%= item.weight %> </td>
+
+								<td>
+									<% if item.deadline.nil? %>
+										<%= "" %>
+									<% else %>
+										<%= item.deadline.strftime('%Y/%m/%-d (%a)') %>
+									<% end %>
+								</td>
+
+								<td> <%= item.item_memo_one %> </td>
+								<td> <%= link_to '編集', edit_item_path(item) %> </td>
+								<td> <%= link_to "削除", item_path(item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "このアイテムを削除します"%> </td>
+								<!-- item_pathでitem Cに行く、each文で既に1件ずつになっているので()に含む -->
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+	    </div>
+
+	    <div id="tab02">
+	    	<div> <%= link_to "終了", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div>
+	    </div>
+
+		</div>
+	</div>
 
 
-
-
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>順位</th>
@@ -67,15 +151,15 @@ jQuery(function($){
   <tbody id="sort">
     <tr>
       <th>1</th>
-      <td>マーリン</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>諸葛孔明</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>ジャンヌ・ダルク</td>
+      <td>C</td>
     </tr>
   </tbody>
 </table>
@@ -84,59 +168,4 @@ jQuery(function($){
 $(function() {
   $('#sort').sortable();
 });
-</script>
-
-
-	<table class="table table-hover">
-		<thead>
-				<th> ☑ </th>
-				<th> カテゴリー </th>
-				<th> サブカテゴリー </th>
-				<th> アイテム名 </th>
-				<th> 数量 </th>
-				<th> 数量の単位 </th>
-				<th> 価格 </th>
-				<th> 価格の単位 </th>
-				<th> 単価(価格/数量) </th>
-				<th> 重量(g) </th>
-				<th> 期限 </th>
-				<th> メモ </th>
-		</thead>
-		<tbody>
-				<% @items.each do |item| %>
-					<tr>
-						<td> <%= check_box_tag :item_name %> </td>
-				    <td> <%= item.category %> </td>
-				    <td> <%= item.subcategory %> </td>
-						<td> <%= item.item_name %> </td>
-						<td> <%= item.item_quantity %> </td>
-						<td> <%= item.unit %> </td>
-						<td> <%= item.price %> </td>
-						<td> <%= item.price_unit %> </td>
-
-						<td>
-							<% if item.price.nil? %>
-								<%= "" %>
-							<% else %>
-								<%= (item.price / item.item_quantity).round(2) %>
-							<% end %>
-						</td>
-
-						<td> <%= item.weight %> </td>
-
-						<td>
-							<% if item.deadline.nil? %>
-								<%= "" %>
-							<% else %>
-								<%= item.deadline.strftime('%Y/%m/%-d (%a)') %>
-							<% end %>
-						</td>
-
-						<td> <%= item.item_memo_one %> </td>
-						<td> <%= link_to '編集', edit_item_path(item) %> </td>
-						<!-- <td> <%#= link_to '編集', item_path(item) %> </td> -->
-						<td> <%= link_to "削除", item_path(item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "このアイテムを削除します"%> </td> <!-- item_pathでitem Cに行く、each文で既に1件ずつになっているので()に含む -->
-					</tr>
-				<% end %>
-		</tbody>
-	</table>
+</script> -->

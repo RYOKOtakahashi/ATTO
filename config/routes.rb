@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
  root 'users#show'
  resources :users
- resources :items
+
+ resources :items do
+	 resource :stars, only: [:create, :destroy]
+ end
+ # 子要素にするのでdo endで囲む
 
 end
