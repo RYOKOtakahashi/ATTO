@@ -11,16 +11,16 @@
 }
 .tabnav li a{
     display: inline-block;
-    background: #405dca;
-    color: #fff;
+    background: #ddd; // 未選択のタブ色
+    color: #333; // 未選択のタブ文字色
     padding: 10px;
     border-radius: 5px 5px 0 0;
     text-decoration: none;
 }
 .tabnav li a:hover,
 .tabnav li a.active{
-    background: #ddd;
-    color: #333;
+    background: #4682b4;
+    color: #fff;
 }
 .tabcontent{
     padding: 20px;

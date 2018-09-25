@@ -3,30 +3,31 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> カテゴリー </th>
-							<th> サブカテゴリー </th>
-							<th> アイテム名 </th>
-							<th> 数量 </th>
-							<th> 数量の単位 </th>
-							<th> 価格 </th>
-							<th> 価格の単位 </th>
-							<th> 重量(g) </th>
-							<th> 期限 </th>
-							<th> メモ </th>
+							<th> 　カテゴリー </th>
+							<th> 　サブカテゴリー </th>
+							<th> 　アイテム名 </th>
+							<th> 　数量 </th>
+							<th> 　数量の単位 </th>
+							<th> 　価格 </th>
+							<th> 　価格の単位 </th>
+							<th> 　重量(g) </th>
+							<th> 　期限 </th>
+							<th> 　メモ </th>
 						</tr>
-							<td> <%= f.text_area :category, size: "13x1" %> </td>
-							<td> <%= f.text_area :subcategory, size: "13x1" %> </td>
-							<td> <%= f.text_area :item_name, size: "13x1" %> </td>
-							<td> <%= f.text_area :item_quantity, size: "13x1" %> </td>
-							<td> <%= f.text_area :unit, size: "13x1" %> </td>
-							<td> <%= f.text_area :price, size: "13x1" %> </td>
-							<td> <%= f.text_area :price_unit, size: "13x1" %> </td>
-							<td> <%= f.text_area :weight, size: "13x1" %> </td>
-							<td> <%= f.text_area :deadline, size: "13x1" %> </td>
-							<td> <%= f.text_area :item_memo_one, size: "11x1" %> </td>
+							<td> <%= f.text_area :category, size: "14x1" %> </td>
+							<td> <%= f.text_area :subcategory, size: "14x1" %> </td>
+							<td> <%= f.text_area :item_name, size: "14x1" %> </td>
+							<td> <%= f.text_area :item_quantity, size: "14x1" %> </td>
+							<td> <%= f.text_area :unit, size: "14x1" %> </td>
+							<td> <%= f.text_area :price, size: "14x1" %> </td>
+							<td> <%= f.text_area :price_unit, size: "14x1" %> </td>
+							<td> <%= f.text_area :weight, size: "14x1" %> </td>
+							<td> <%= f.text_area :deadline, size: "14x1" %> </td>
+							<td> <%= f.text_area :item_memo_one, size: "14x1" %> </td>
+							<td> <%= f.submit '登録', class: "btn-lg btn-success" %> </td>
 					</tbody>
 				</table>
-			<div> <%= f.submit '登録' %> </div>
+			
 		<% end %>
 	</div>
 
@@ -87,12 +88,12 @@
 								<td>
 									<% if item.starred_by?(current_user) %>
 								    <%= link_to item_stars_path(item), method: :delete do %>
-							      <p class="glyphicon glyphicon-star" aria-hidden="true" style="color: fuchsia;"></p>
+							      <p class="glyphicon glyphicon-star" aria-hidden="true" style="color: red; font-size:25px"></p>
 							      <!-- <p class="fa fa-heart" aria-hidden="true" style="color: red;"></p> -->
 							    <% end %>
 									<% else %>
 								    <%= link_to item_stars_path(item), method: :post do %>
-							      <p class="glyphicon glyphicon-star-empty" aria-hidden="true"></p>
+							      <p class="glyphicon glyphicon-star-empty" aria-hidden="true" style="font-size:25px"></p>
 								    <% end %>
 									<% end %>
 								</td>
@@ -124,8 +125,8 @@
 								</td>
 
 								<td> <%= item.item_memo_one %> </td>
-								<td> <%= link_to '編集', edit_item_path(item) %> </td>
-								<td> <%= link_to "削除", item_path(item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "このアイテムを削除します"%> </td>
+								<td> <%= link_to '編集', edit_item_path(item), class: "btn btn-success" %> </td>
+								<td> <%= link_to "", item_path(item), method: :delete, class: "glyphicon glyphicon-remove-circle", style: "font-size:25px;", "data-confirm" => "この項目を削除します"%> </td>
 								<!-- item_pathでitem Cに行く、each文で既に1件ずつになっているので()に含む -->
 							</tr>
 						<% end %>
@@ -135,6 +136,9 @@
 
 	    <div id="tab02">
 	    	<div> <%= link_to "終了", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div>
+	    	<a href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
+	    	<a href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma">Facebook</a>
+	    	<a href="http://line.me/R/msg/text/?http://qiita.com/katsuma">LINE</a>
 	    </div>
 
 		</div>
