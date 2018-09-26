@@ -48,6 +48,15 @@
 	</script>
 
 
+	<!-- DD(tbodyにid="sort") -->
+	<script>
+		$(function() {
+		  $('#sort').sortable();
+		});
+	</script>
+	<!-- DDここまで -->
+
+
 	<div class="col-md-11">
 		<ul class="tabnav">
 	    <li>
@@ -80,7 +89,7 @@
 						<th> 期限 </th>
 						<th> メモ </th>
 					</thead>
-					<tbody class="item_tbody">
+					<tbody class="item_tbody" id="sort">
 						<% @items.each do |item| %>
 							<tr>
 								<!-- <td> <%#= check_box_tag :item_name %> </td> -->
@@ -165,33 +174,3 @@
 
 		</div>
 	</div>
-
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>順位</th>
-      <th>名前</th>
-    </tr>
-  </thead>
-  <tbody id="sort">
-    <tr>
-      <th>1</th>
-      <td>A</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>B</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>C</td>
-    </tr>
-  </tbody>
-</table>
-
-<script>
-$(function() {
-  $('#sort').sortable();
-});
-</script> -->
