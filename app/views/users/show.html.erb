@@ -73,7 +73,8 @@
 
 		<div class="tabcontent">
 	    <div id="tab01">
-	    	<table class="table table-hover">
+
+	    	<table class="table table-hover table-bordered">
 					<thead class="item_thead">
 						<!-- <th> ☑ </th> -->
 						<th> ☆ </th>
@@ -88,6 +89,8 @@
 						<th> 重量(g) </th>
 						<th> 期限 </th>
 						<th> メモ </th>
+						<th> 編集 </th>
+						<th> 削除 </th>
 					</thead>
 					<tbody class="item_tbody" id="sort">
 						<% @items.each do |item| %>
@@ -149,18 +152,21 @@
 
 				<div class="popupModal1">
 				 	<input type="radio" name="modalPop" id="pop11" />
-				 	<label for="pop11", class="btn btn-success">登録名変更</label>
+				 	<label for="pop11", class="btn btn-success"> 登録名変更 </label>
 				 	<input type="radio" name="modalPop" id="pop12" />
 				 	<label for="pop12">CLOSE</label>
 				 	<input type="radio" name="modalPop" id="pop13" />
 				 	<label for="pop13">×</label>
 				 	<div class="modalPopup2">
 				  	<div class="modalPopup3">
-				   		<h4 class="modalTitle">登録名変更</h4>
+				   		<h4 class="modalTitle"> ご希望のお名前を入力し、変更ボタンを押してください </h4>
 				   		<div class="modalMain">
+				   			<p> 現在のお名前：　<%= @user.name %> </p>
+				   			<div> ↓ </div>
 					    	<%= form_for(@user) do |f| %>
-							    <%= f.text_field :name, autofocus: true, placeholder:"新しい名前" %>
-							    <%= f.submit "登録名変更", class:"btn btn-success" %>
+							    <label>変更後のお名前：</label>
+							    <%= f.text_field :name, autofocus: true %>
+							    <div> <%= f.submit "変更 !", class:"btn btn-success" %> </div>
 								<% end %>
 				   		</div>
 				  	</div>

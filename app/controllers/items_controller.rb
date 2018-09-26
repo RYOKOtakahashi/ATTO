@@ -37,7 +37,6 @@ class ItemsController < ApplicationController
     redirect_to user_path(current_user.id)
 	end
 
-	
 
 	private
 		def item_params
