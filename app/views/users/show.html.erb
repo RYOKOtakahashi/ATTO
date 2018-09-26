@@ -16,18 +16,18 @@
 						</tr>
 							<td> <%= f.text_area :category, size: "14x1" %> </td>
 							<td> <%= f.text_area :subcategory, size: "14x1" %> </td>
-							<td> <%= f.text_area :item_name, size: "14x1" %> </td>
+							<td> <%= f.text_area :item_name, size: "14x1", placeholder: "ここだけ必須" %> </td>
 							<td> <%= f.text_area :item_quantity, size: "14x1" %> </td>
-							<td> <%= f.text_area :unit, size: "14x1" %> </td>
-							<td> <%= f.text_area :price, size: "14x1" %> </td>
-							<td> <%= f.text_area :price_unit, size: "14x1" %> </td>
-							<td> <%= f.text_area :weight, size: "14x1" %> </td>
+							<td> <%= f.text_area :unit, size: "14x1", placeholder: "文字・記号可" %> </td>
+							<td> <%= f.text_area :price, size: "14x1", placeholder: "小数可" %> </td>
+							<td> <%= f.text_area :price_unit, size: "14x1", placeholder: "文字・記号可" %> </td>
+							<td> <%= f.text_area :weight, size: "14x1", placeholder: "グラム" %> </td>
 							<td> <%= f.text_area :deadline, size: "14x1" %> </td>
 							<td> <%= f.text_area :item_memo_one, size: "14x1" %> </td>
-							<td> <%= f.submit '登録', class: "btn-lg btn-success" %> </td>
+							<td> <%= f.submit '登録', class: 'btn-lg btn-success' %> </td>
 					</tbody>
 				</table>
-			
+			<%#= f.submit '登録', class: "btn-lg btn-success" %>
 		<% end %>
 	</div>
 
@@ -52,7 +52,7 @@
 		<ul class="tabnav">
 	    <li>
 	    	<a href="#tab01">
-	    		<%= @user.name %> のタブ
+	    		<%= @user.name %> のタブ （登録数　<%= @items.count %>）
 	    	</a>
 	    </li>
 	    <li>
@@ -101,7 +101,7 @@
 								<td> <%= item.category %> </td>
 								<td> <%= item.subcategory %> </td>
 								<td> <%= item.item_name %> </td>
-								<td> <%= item.item_quantity %> </td>
+								<td> <%= item.item_quantity.round(2) %> </td>
 								<td> <%= item.unit %> </td>
 								<td> <%= item.price %> </td>
 								<td> <%= item.price_unit %> </td>
@@ -134,12 +134,34 @@
 				</table>
 	    </div>
 
+
 	    <div id="tab02">
 	    	<div> <%= link_to "終了", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div>
-	    	<a href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
+
+				<div class="popupModal1">
+				 	<input type="radio" name="modalPop" id="pop11" />
+				 	<label for="pop11", class="btn btn-success">登録名変更</label>
+				 	<input type="radio" name="modalPop" id="pop12" />
+				 	<label for="pop12">CLOSE</label>
+				 	<input type="radio" name="modalPop" id="pop13" />
+				 	<label for="pop13">×</label>
+				 	<div class="modalPopup2">
+				  	<div class="modalPopup3">
+				   		<h4 class="modalTitle">登録名変更</h4>
+				   		<div class="modalMain">
+					    	<%= form_for(@user) do |f| %>
+							    <%= f.text_field :name, autofocus: true, placeholder:"新しい名前" %>
+							    <%= f.submit "登録名変更", class:"btn btn-success" %>
+								<% end %>
+				   		</div>
+				  	</div>
+				 	</div>
+				</div>
+
+				<a href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
 	    	<a href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma">Facebook</a>
 	    	<a href="http://line.me/R/msg/text/?http://qiita.com/katsuma">LINE</a>
-	    </div>
+			</div>
 
 		</div>
 	</div>
