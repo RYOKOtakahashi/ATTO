@@ -32,6 +32,8 @@
 	</div>
 
 
+
+<!-- タブ -->
 	<script>
 		jQuery(function($){
 	    $('.tabcontent > div').hide();
@@ -46,6 +48,7 @@
 	    }).filter(':eq(0)').click();
 		});
 	</script>
+<!-- タブここまで -->
 
 
 	<!-- DD(tbodyにid="sort") -->
@@ -56,6 +59,20 @@
 	</script>
 	<!-- DDここまで -->
 
+
+<div>
+	<%= form_tag(user_path(current_user.id), method: "get") do %>
+	<%= label_tag :item_name, "アイテム名で検索" %>
+  <%= text_field_tag :item_name, params[:item_name] %>
+  <%= label_tag :category, "カテゴリー名で検索" %>
+  <%= text_field_tag :category, params[:category] %>
+  <%= button_tag( class: " btn-primary") do %>
+  <%= content_tag :span, "", class: "glyphicon glyphicon-search" %>
+  <% end %>
+  <% end %>
+</div>
+
+<div class="search-results"><%= notice %></div>
 
 	<div class="col-md-12">
 		<ul class="tabnav">
@@ -163,7 +180,7 @@
 				  	<div class="modalPopup3">
 				   		<h4 class="modalTitle"> ご希望のお名前を入力し、変更ボタンを押してください </h4>
 				   		<div class="modalMain">
-				   			<p> 現在のお名前：　<%= @user.name %> </p>
+				   			<labe> 現在のお名前：　<%= @user.name %> </label>
 				   			<div> ↓ </div>
 					    	<%= form_for(@user) do |f| %>
 							    <label>変更後のお名前：</label>

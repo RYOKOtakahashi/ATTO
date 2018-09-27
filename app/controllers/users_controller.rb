@@ -4,6 +4,24 @@ class UsersController < ApplicationController
 		@item = Item.new
 		@user = User.find(params[:id])
 		@items = @user.items.all
+
+		if params[:item_name].present?
+			@items = @items.get_by_item_name params[:item_name]
+	  end
+	  if params[:category].present?
+			@items = @items.get_by_category params[:category]
+	  end
+	  unless @items.count == Item.all.count # itemsの数がitems.allから変わっているか確認
+		if @items.count == 0 # itemsの数が０の時
+		  @items = Item.all
+		  flash.now[:notice] = "登録されていません。"
+		  render :action => :show and return  # showに戻り、renderをもう一度使いたいのでreturn
+		elsif @items.count > 0
+      flash.now[:notice] = "#{@items.count}件ありました。" #{@items.count}で絞り込まれた数を表示させる
+      render :action => :show and return # renderにする事で変更された情報を維持しつつnoticeを表示させる
+		end
+	  end
+
 	end
 
   def update
