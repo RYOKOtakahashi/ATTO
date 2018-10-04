@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+ #deviceのメソッド、ログイン未認証ならrootパスへリダイレクトする機能を実装。未ログインのユーザーはshowにアクセス不可
+
 	def show
 		@item = Item.new
 		@user = User.find(params[:id])
@@ -31,6 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:notice] = '更新しました'
     redirect_to user_path(current_user.id)
 	end
 
