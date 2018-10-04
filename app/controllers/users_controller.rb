@@ -9,9 +9,6 @@ class UsersController < ApplicationController
 		#@products = @search.result #@searchに対して@products = @search.resultとしてあげれば検索結果が得られる
 		#V側でparams[:q]をいかに作るかがポイント
 
-		@q = Item.search(params[:q])
-    @itemsresult = @q.result(distinct: true)
-
 		if params[:item_name].present?
 			@items = @items.get_by_item_name params[:item_name]
 	  end
@@ -21,10 +18,10 @@ class UsersController < ApplicationController
 	  unless @items.count == Item.all.count # itemsの数がitems.allから変わっているか確認
 		if @items.count == 0 # itemsの数が０の時
 		  @items = Item.all
-		  flash.now[:notice] = "登録されていません。"
+		  flash.now[:notice] = "登録されていません"
 		  render :action => :show and return  # showに戻り、renderをもう一度使いたいのでreturn
 		elsif @items.count > 0
-      flash.now[:notice] = "#{@items.count}件ありました。" #{@items.count}で絞り込まれた数を表示させる
+      flash.now[:notice] = "#{@items.count}件ありました" #{@items.count}で絞り込まれた数を表示させる
       render :action => :show and return # renderにする事で変更された情報を維持しつつnoticeを表示させる
 		end
 	  end
