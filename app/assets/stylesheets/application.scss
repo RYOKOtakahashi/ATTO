@@ -23,6 +23,13 @@
   box-sizing: border-box;
 }
 
+.background_img_signin {
+  width: 100%;
+  height: 750px;
+  background-image: url(contrail2.jpg);
+  background-size: cover;
+}
+
 .background_img_login {
   width: 100%;
   height: 750px;
@@ -30,7 +37,7 @@
 }
 
 .login {
-	width: 19%;
+	width: 23%;
 	margin: 0 auto;
 	border: 1px solid gray;
 	text-align: center;
