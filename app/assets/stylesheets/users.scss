@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// リセットCSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 // タブ
 .tabnav{
     margin: 0;
