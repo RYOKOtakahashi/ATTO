@@ -37,6 +37,16 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user.id)
 	end
 
+	def destroy
+    user = User.find(current_user.id)
+    # if admin_signed_in?
+    #   user.destroy
+    #   redirect_to users_path
+    # else
+      user.destroy
+      redirect_to new_user_registration_path
+  end
+
 	private
 		def user_params
 			params.require(:user).permit(:name,

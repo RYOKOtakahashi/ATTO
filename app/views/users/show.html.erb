@@ -1,3 +1,4 @@
+<div class="background_img_show">
 	<div class="col-md-12">
 		<%= form_for(@item) do |f| %>
 				<table>
@@ -18,10 +19,10 @@
 							<td> <%= f.text_area :subcategory, size: "15x1" %> </td>
 							<td> <%= f.text_area :item_name, size: "15x1", placeholder: "ここだけ必須" %> </td>
 							<td> <%= f.text_area :item_quantity, size: "14x1" %> </td>
-							<td> <%= f.text_area :unit, size: "14x1", placeholder: "文字・記号可" %> </td>
+							<td> <%= f.text_area :unit, size: "14x1", placeholder: "文字・記号OK" %> </td>
 							<td> <%= f.text_area :price, size: "14x1", placeholder: "小数可" %> </td>
-							<td> <%= f.text_area :price_unit, size: "14x1", placeholder: "文字・記号可" %> </td>
-							<td> <%= f.text_area :weight, size: "14x1", placeholder: "グラム" %> </td>
+							<td> <%= f.text_area :price_unit, size: "14x1", placeholder: "文字・記号OK" %> </td>
+							<td> <%= f.text_area :weight, size: "14x1" %> </td>
 							<td> <%= f.text_area :deadline, size: "15x1" %> </td>
 							<td> <%= f.text_area :item_memo_one, size: "15x1" %> </td>
 							<td> <%= f.submit '登録', class: 'btn-lg btn-success' %> </td>
@@ -79,7 +80,6 @@
   <% end %>
   <% end %>
 </div>
-
 
 	<div class="col-md-12">
 		<ul class="tabnav">
@@ -178,7 +178,8 @@
 
 
 	    <div id="tab02">
-	    	<div> <%= link_to "終了", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div>
+	    	<div> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div> <br/>
+	    	<div> <%= link_to "アカウントを削除", user_path(current_user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "データはすべて削除され、復元できません。よろしいですか？" %> </div> <br/>
 
 				<div class="popupModal1">
 				 	<input type="radio" name="modalPop" id="pop11" />
@@ -191,7 +192,7 @@
 				  	<div class="modalPopup3">
 				   		<h4 class="modalTitle"> ご希望のお名前を入力し、変更ボタンを押してください </h4>
 				   		<div class="modalMain">
-				   			<labe> 現在のお名前：　<%= @user.name %> </label>
+				   			<label> 現在のお名前：　<%= @user.name %> </label>
 				   			<div> ↓ </div>
 					    	<%= form_for(@user) do |f| %>
 							    <label>変更後のお名前：</label>
@@ -201,12 +202,13 @@
 				   		</div>
 				  	</div>
 				 	</div>
-				</div>
+				</div><br/>
 
-				<a href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
-	    	<a href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma">Facebook</a>
-	    	<a href="http://line.me/R/msg/text/?http://qiita.com/katsuma">LINE</a>
+				<a class="btn btn-social btn-tw" href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
+	    	<a class="btn btn-social btn-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma">Facebook</a>
+	    	<a class="btn btn-social btn-line" href="http://line.me/R/msg/text/?http://qiita.com/katsuma">LINE</a>
 			</div>
 
 		</div>
 	</div>
+</div>
