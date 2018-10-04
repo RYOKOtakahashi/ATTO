@@ -5,6 +5,13 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@items = @user.items.all
 
+		#@search = Item.ransack(params[:q]) #params[:q]には検索パラメータが渡される、それを@search = Item.ransack(params[:q])としてあげれば、@searchという検索オブジェクトが作成される
+		#@products = @search.result #@searchに対して@products = @search.resultとしてあげれば検索結果が得られる
+		#V側でparams[:q]をいかに作るかがポイント
+
+		@q = Item.search(params[:q])
+    @itemsresult = @q.result(distinct: true)
+
 		if params[:item_name].present?
 			@items = @items.get_by_item_name params[:item_name]
 	  end

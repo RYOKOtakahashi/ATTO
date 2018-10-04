@@ -131,20 +131,20 @@
 									<td> <%= item.category %> </td>
 									<td> <%= item.subcategory %> </td>
 									<td> <%= item.item_name %> </td>
-									<td> <%= item.item_quantity.round(2) %> </td>
+									<td> <%= number_with_delimiter(item.item_quantity.round(2)) %> </td>
 									<td> <%= item.unit %> </td>
-									<td> <%= item.price %> </td>
+									<td> <%= number_with_delimiter(item.price) %> </td>
 									<td> <%= item.price_unit %> </td>
 
 									<td>
 										<% if item.price.nil? %>
 											<%= "" %>
 										<% else %>
-											<%= (item.price / item.item_quantity).round(2) %>
+											<%= number_with_delimiter((item.price / item.item_quantity).round(2)) %>
 										<% end %>
 									</td>
 
-									<td> <%= item.weight %> </td>
+									<td> <%= number_with_delimiter(item.weight) %> </td>
 
 									<td>
 										<% if item.deadline.nil? %>
