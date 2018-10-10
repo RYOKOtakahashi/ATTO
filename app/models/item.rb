@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 	belongs_to :user
 	has_many :stars, dependent: :destroy
 	validates :item_name, presence: true
+	attachment :image
 
 	def starred_by?(user)
     stars.where(user_id: user.id).exists?

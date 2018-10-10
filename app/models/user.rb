@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :encrypted_password, presence: true, uniqueness: true, length: { minimum: 4 }
+  attachment :image
 
   def email_required?
     false

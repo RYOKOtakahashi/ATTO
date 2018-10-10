@@ -14,6 +14,24 @@
   background-image: url(edit.jpg);
 }
 
+.table_edit {
+	margin-left: 10px;
+	padding-top: 50px;
+}
+
 .th_edit {
 	color: white;
+}
+
+
+
+// レスポンシブ
+@media screen and (max-width:1024px) {
+
+.table_edit {
+	margin-left: 10px;
+	padding-top: 50px;
+	width: 300px;
+}
+
 }
