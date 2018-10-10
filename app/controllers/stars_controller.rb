@@ -1,5 +1,7 @@
 class StarsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:new_user_session_path, :new_user_registration_path]
+
 	def create
     item = Item.find(params[:item_id])
     star = current_user.stars.new(item_id: item.id)

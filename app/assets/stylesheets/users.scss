@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// リセットCSS
+// リセットCSS、全ブラウザがデフォルトでCSSを持っており、webページ用に作ったCSSが影響を受けることが多いので、打ち消して意図したとおりにページを表示し、ブラウザごとのデザインを統一できるように
 * {
   margin: 0;
   padding: 0;
@@ -55,8 +55,10 @@
   display: block;
   z-index: 998;
   position: fixed;
-  width: 90%;
+  width: 90%; 
+  // widthは、未指定なら横幅いっぱいに広がり、子要素は親要素の値が最大値
   height: 80%;
+  // heightは、未指定なら子要素の高さの合計がそのまま親要素の高さ
   border-radius: 20px;
   left: 50%;
   top: 50%;
@@ -174,27 +176,17 @@
   height: 750px;
 }
 
-.SNS {
-  border-radius: 20px;
-  border: 1px solid gray;
-}
 
-.btn-social {
-  width: 120px;
-  color: white;
+.fab {
+  margin-right: 25px;
+  font-size: 1.8em;
 }
-
-/* Facebook */
-.btn-fb {
-    background-color: #3B5998;
+.fa-twitter-square {
+  color: #008BBB;
 }
-
-/* Twitter */
-.btn-tw {
-    background-color: #008BBB;
+.fa-facebook-square {
+  color: #3B5998;
 }
-
-/* line */
-.btn-line {
-    background-color: #7CFC00;
+.fa-line {
+  color: #7CFC00;
 }

@@ -1,3 +1,19 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background_img_edit {
+  width: 100%;
+  height: 735px;
+  background-image: url(edit.jpg);
+}
+
+.th_edit {
+	color: white;
+}

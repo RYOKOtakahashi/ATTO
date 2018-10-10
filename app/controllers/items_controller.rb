@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
 
+	before_action :authenticate_user!, except: [:new_user_session_path, :new_user_registration_path]
+
 	def create
 		@item = Item.new(item_params)
-		@item.user_id = current_user.id #userの存在しないitemができないよう、save前にuserを保存する
+		@item.user_id == current_user.id #userの存在しないitemができないよう、save前にuserを保存する
 		@item.save
 		flash[:notice] = '登録しました'
 		redirect_to user_path(current_user.id)
@@ -20,18 +22,6 @@ class ItemsController < ApplicationController
 		redirect_to user_path(current_user.id)
 	end
 
-	# def update
-	# 	@book = Book.new(book_params)
-	# 	@book.user_id = current_user.id
- #    if  @book.save
- #    	flash[:notice] = 'successfully editted'
- #        redirect_to book_path(@book.id)
- #    else
- #    	@books = Book.all
- #    	@user = current_user
-	#     render :index
-	# end
-	# end
 
 	def destroy
     item = Item.find(params[:id])

@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <!-- ドキュメントタイプと言い、このHTMLファイルがどのバージョンを使って書かれているかを宣言するタグ。ブラウザがHTMLファイルとして認識するために必要なので必須 -->
+<html> <!-- lang="ja"属性は、SEO目的だと無意味 -->
+
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <!-- meta要素は、文章に関する情報を指定するもの。"UTF-8"は文字コードといい、コンピュータでの文字の処理方法を指定している。これが未指定だと文章が文字化けする -->
+    <meta name="viewport" content="width=device-width">
+    <!-- viewportの幅は端末やブラウザアプリ毎によって異なる。端末ごとのサイズに応じてフレキシブルな表示ができる一方、細かい表示の統一はやりづらい -->
     <title>ATTO</title>
+    <!-- HTMLファイルがどういうページなのかを示すためのタイトルを記述。ページ上には反映されず、ブラウザのツールバーや検索エンジンの検索結果のページ名となる -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <!-- Font Awesome導入、style.cssの記述よりも上に配置 -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="main.js"></script>
-
+    <link rel="stylesheet" href="style.css">
+    <!-- HTMLファイルからCSSファイルを読み込むために必須、下の方が重要度高くなるので自分の記述したスタイルは一番下 -->
+    <!-- linkタグのrel属性：　現在のファイルとリンク先の外部ファイルとの関係性を表すキーワード（cssならstylesheetと記述） -->
+    <!-- linkタグのhref属性：　読み込むファイル名を書くことで、HTMLファイルに外部ファイルを読み込ませる（作ったcssファイルの名前を記述） -->
   </head>
 
   <body>
     <%= yield %>
   </body>
+
 </html>
