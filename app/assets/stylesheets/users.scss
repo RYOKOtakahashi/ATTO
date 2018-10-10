@@ -55,7 +55,7 @@
   display: block;
   z-index: 998;
   position: fixed;
-  width: 90%; 
+  width: 90%;
   // widthは、未指定なら横幅いっぱいに広がり、子要素は親要素の値が最大値
   height: 80%;
   // heightは、未指定なら子要素の高さの合計がそのまま親要素の高さ
@@ -181,11 +181,11 @@
   margin-right: 25px;
   font-size: 1.8em;
 }
-.fa-twitter-square {
-  color: #008BBB;
-}
 .fa-facebook-square {
   color: #3B5998;
+}
+.fa-twitter-square {
+  color: #008BBB;
 }
 .fa-line {
   color: #7CFC00;
