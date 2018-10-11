@@ -4,25 +4,25 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> 　カテゴリー </th>
-							<th> 　サブカテゴリー </th>
-							<th> 　アイテム名 </th>
-							<th> 　数量 </th>
-							<th> 　数量の単位 </th>
-							<th> 　価格 </th>
-							<th> 　価格の単位 </th>
-							<th> 　重量(g) </th>
-							<th> 　期限 </th>
-							<th> 　メモ </th>
+							<th> <i>&emsp;</i>カテゴリー </th>
+							<th> <i>&emsp;</i>サブカテゴリー </th>
+							<th> <i>&emsp;</i>アイテム名 </th>
+							<th> <i>&emsp;</i>数量 </th>
+							<th> <i>&emsp;</i>数量の単位 </th>
+							<th> <i>&emsp;</i>価格 </th>
+							<th> <i>&emsp;</i>価格の単位 </th>
+							<th> <i>&emsp;</i>重量(g) </th>
+							<th> <i>&emsp;</i>期限 </th>
+							<th> <i>&emsp;</i>メモ </th>
 						</tr>
 							<td> <%= f.text_area :category, size: "15x1" %> </td>
 							<td> <%= f.text_area :subcategory, size: "15x1" %> </td>
 							<td> <%= f.text_area :item_name, size: "15x1", placeholder: "ここだけ必須" %> </td>
-							<td> <%= f.text_area :item_quantity, size: "14x1" %> </td>
+							<td> <%= f.text_area :item_quantity, size: "14x1", placeholder: "小数OK" %> </td>
 							<td> <%= f.text_area :unit, size: "14x1", placeholder: "文字・記号OK" %> </td>
 							<td> <%= f.text_area :price, size: "14x1", placeholder: "小数OK" %> </td>
 							<td> <%= f.text_area :price_unit, size: "14x1", placeholder: "文字・記号OK" %> </td>
-							<td> <%= f.text_area :weight, size: "14x1" %> </td>
+							<td> <%= f.text_area :weight, size: "14x1", placeholder: "グラム" %> </td>
 							<td> <%= f.text_area :deadline, size: "15x1" %> </td>
 							<td> <%= f.text_area :item_memo_one, size: "15x1" %> </td>
 							<td> <%= f.submit '登録', class: 'btn-lg btn-success', "data-disable-with" => "登録中..." %> </td>
@@ -73,19 +73,20 @@
 
 <div class="col-xs-12 col-lg-12">
 	<%= form_tag(user_path(current_user.id), method: "get") do %>
-	<%= label_tag :item_name, "アイテム名で検索　" %>
+	<%= label_tag :item_name, "アイテム名で検索" %><i>&emsp;</i>
   <%= text_field_tag :item_name, params[:item_name] %>
   <%= button_tag( class: " btn-primary") do %>
   <%= content_tag :span, "", class: "glyphicon glyphicon-search" %>
   <% end %>
   <% end %>
 </div>
+<div> &nbsp; </div>
 
 	<div class="col-xs-12 col-lg-12">
 		<ul class="tabnav">
 	    <li>
 	    	<a href="#tab01">
-	    		<%= @user.name %> のタブ （登録数　<%= @items.count %>）
+	    		<%= @user.name %> のタブ （登録数<i>&emsp;</i><%= @items.count %>）
 	    	</a>
 	    </li>
 	    <li>
@@ -142,7 +143,15 @@
 									<td> <%= item.category %> </td>
 									<td> <%= item.subcategory %> </td>
 									<td> <%= item.item_name %> </td>
-									<td> <%= number_with_delimiter(item.item_quantity.round(2)) %> </td>
+
+									<td>
+										<% if item.item_quantity.nil? %>
+											<%= "" %>
+										<% else %>
+											<%= number_with_delimiter(item.item_quantity.round(2)) %>
+										<% end %>
+									</td>
+
 									<td> <%= item.unit %> </td>
 									<td> <%= number_with_delimiter(item.price) %> </td>
 									<td> <%= item.price_unit %> </td>
@@ -189,7 +198,6 @@
 
 	    <div id="tab02">
 	    	<div> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> </div> <br>
-	    	<div> <%= link_to "アカウントを削除", user_path(current_user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "データはすべて削除され、復元できません。よろしいですか？" %> </div> <br>
 
 				<div class="popupModal1">
 				 	<input type="radio" name="modalPop" id="pop11" />
@@ -200,22 +208,30 @@
 				 	<label for="pop13">×</label>
 				 	<div class="modalPopup2">
 				  	<div class="modalPopup3">
-				   		<h4 class="modalTitle"> ご希望のお名前を入力し、変更ボタンを押してください </h4>
+				   		<h4 class="modalTitle"> お名前を変更しますか？ </h4>
 				   		<div class="modalMain">
-				   			<label> 現在のお名前：　<%= @user.name %> </label>
+				   			<label> 現在のお名前：&nbsp;<%= @user.name %> </label>
 				   			<div> ↓ </div>
 					    	<%= form_for(@user) do |f| %>
 							    <label>変更後のお名前：</label>
 							    <%= f.text_field :name, autofocus: true %><br>
-							    <div> <%= f.submit "変更 !", class:"btn btn-success", "data-disable-with" => "変更中..." %> </div>
+							    <div> <%= f.submit "変更", class:"btn btn-success", "data-disable-with" => "変更中..." %> </div>
 								<% end %>
 				   		</div>
 				  	</div>
 				 	</div>
 				</div><br>
-				<a class="fab fa-facebook-square" href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma">Facebook</a>
-				<a class="fab fa-twitter-square" href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
-	    	<a class="fab fa-line" href="http://line.me/R/msg/text/?http://qiita.com/katsuma">LINE</a>
+
+				<div>
+					<a class="fab fa-facebook-square" href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma"> Facebook </a>
+					<a class="fab fa-twitter-square" href="http://twitter.com/share?url=http://qiita.com/katsuma"> Twitter </a>
+	    		<a class="fab fa-line" href="http://line.me/R/msg/text/?http://qiita.com/katsuma"> LINE </a>
+	    	</div> <br>
+
+	    	<div>
+	    		<%= link_to "アカウント削除", user_path(current_user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "データはすべて削除され、復元できません。よろしいですか？" %>
+	    	</div>
+
 			</div>
 
 		</div>

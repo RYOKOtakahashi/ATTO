@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, except: [:new_user_registration_path, :new_user_session_path]
 
-  protect_from_forgery with: :exception #protect_from_forgery：　CSRF対策用メソッド
+  protect_from_forgery with: :exception #protect_from_forgery： CSRF対策用メソッド
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 	def after_sign_in_path_for(resource)

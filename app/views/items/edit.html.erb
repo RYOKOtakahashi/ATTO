@@ -15,18 +15,30 @@
 						<th class="th_edit"> 期限 </th>
 						<th class="th_edit"> メモ </th>
 					</tr>
+
+					<tr>
+						<td class="th_edit"> </td>
+						<td class="th_edit"> </td>
+						<td class="th_edit"> <small> ここだけ必須 </small> </td>
+						<td class="th_edit"> <small> 小数OK </small> </td>
+						<td class="th_edit"> <small> 文字・記号OK </small> </td>
+						<td class="th_edit"> <small> 小数OK </small> </td>
+						<td class="th_edit"> <small> 文字・記号OK </small> </td>
+						<td class="th_edit"> <small> グラム </small> </td>
+					</tr>
+
 						<td> <%= f.text_area :category, size: "15x1" %> </td>
 						<td> <%= f.text_area :subcategory, size: "15x1" %> </td>
-						<td> <%= f.text_area :item_name, size: "15x1", placeholder: "ここだけ必須" %> </td>
+						<td> <%= f.text_area :item_name, size: "15x1" %> </td>
 						<td> <%= f.text_area :item_quantity, size: "14x1" %> </td>
-						<td> <%= f.text_area :unit, size: "14x1", placeholder: "文字・記号OK" %> </td>
-						<td> <%= f.text_area :price, size: "14x1", placeholder: "小数OK" %> </td>
-						<td> <%= f.text_area :price_unit, size: "14x1", placeholder: "文字・記号OK" %> </td>
+						<td> <%= f.text_area :unit, size: "14x1" %> </td>
+						<td> <%= f.text_area :price, size: "14x1" %> </td>
+						<td> <%= f.text_area :price_unit, size: "14x1" %> </td>
 						<td> <%= f.text_area :weight, size: "14x1" %> </td>
 						<td> <%= f.text_area :deadline, size: "15x1" %>  </td>
 						<td> <%= f.text_area :item_memo_one, size: "15x1" %> </td>
-						<td> <%= f.submit '更新', class: 'btn-lg btn-success', "data-disable-with" => "更新中..." %> </td>
-						<td> <%= link_to "戻る", user_path(current_user.id), class: 'btn-lg btn-primary' %> </td>
+						<td> <%= f.submit '更新', class: 'btn btn-lg btn-success', "data-disable-with" => "更新中..." %> </td>
+						<td> <%= link_to "戻る", user_path(current_user.id), class: 'btn btn-primary' %> </td>
 					</tbody>
 			</table>
 			<%#= link_to "一覧に戻る", user_path(current_user.id), class: 'btn btn-primary' %>

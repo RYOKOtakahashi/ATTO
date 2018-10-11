@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_055459) do
+ActiveRecord::Schema.define(version: 2018_10_11_115448) do
 
   create_table "items", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "item_name", null: false
-    t.float "item_quantity", default: 1.0
+    t.float "item_quantity"
     t.float "price"
     t.integer "weight"
     t.text "item_memo_one"

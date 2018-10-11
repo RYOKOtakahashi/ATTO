@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-		@item.user_id = current_user.id #userの存在しないitemができないよう、save前にuserを保存する
+		@item.user_id = current_user.id #userの存在しないitemができないよう、save前にuserを保存
 		@item.save
 		flash[:notice] = '登録しました'
 		redirect_to user_path(current_user.id)
