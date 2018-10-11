@@ -166,9 +166,19 @@
 									</td>
 
 									<td style="word-wrap:break-word;"> <%= item.item_memo_one %> </td>
-									<td> <%= link_to '編集', edit_item_path(item), class: "btn btn-success" %> </td>
-									<td> <%= link_to "", item_path(item), method: :delete, class: "glyphicon glyphicon-remove-circle", style: "font-size:25px;", "data-confirm" => "この項目を削除します"%> </td>
-									<!-- item_pathでitem Cに行く、each文で既に1件ずつになっているので()に含む -->
+
+									<%# if @items == current_user %>
+										<td> <%= link_to '編集', edit_item_path(item), class: "btn btn-success" %> </td>
+									<%# elsif %>
+										<!-- <td> .. </td> -->
+									<%# end %>
+
+									<%# if @items == current_user %>
+										<td> <%= link_to "", item_path(item), method: :delete, class: "glyphicon glyphicon-remove-circle", style: "font-size:25px;", "data-confirm" => "この項目を削除します"%> </td> <!-- item_pathでitem Cに行く、each文で既に1件ずつになっているので()に含む -->
+									<%# elsif %>
+										<!-- <td> .. </td> -->
+									<%# end %>
+
 								</tr>
 							<% end %>
 						</tbody>

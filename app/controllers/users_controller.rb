@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 	def show
 		@item = Item.new
-		@user = User.find(params[:id])
+		@user = User.find(current_user.id)
 		@items = @user.items.all
 
 		if params[:item_name].present?
