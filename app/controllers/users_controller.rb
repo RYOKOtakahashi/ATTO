@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate_user!, except: [:new_user_session_path, :new_user_registration_path] #deviceのメソッド、ログイン未認証ならrootパスへリダイレクトする機能を実装。未ログインのユーザーはshowにアクセス不可
+	before_action :authenticate_user!, except: [:new_user_registration_path, :new_user_session_path] #deviceのメソッド、ログイン未認証ならrootパスへリダイレクトする機能を実装。未ログインのユーザーはshowにアクセス不可
 
 	def show
 		@item = Item.new

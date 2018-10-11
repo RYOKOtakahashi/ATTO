@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-	before_action :authenticate_user!, except: [:new_user_session_path, :new_user_registration_path]
+	before_action :authenticate_user!, except: [:new_user_registration_path, :new_user_session_path]
 
 	def create
 		@item = Item.new(item_params)

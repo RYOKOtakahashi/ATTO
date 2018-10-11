@@ -25,7 +25,7 @@
 						<td> <%= f.text_area :weight, size: "14x1" %> </td>
 						<td> <%= f.text_area :deadline, size: "15x1" %>  </td>
 						<td> <%= f.text_area :item_memo_one, size: "15x1" %> </td>
-						<td> <%= f.submit '更新', class: 'btn-lg btn-success' %> </td>
+						<td> <%= f.submit '更新', class: 'btn-lg btn-success', "data-disable-with" => "更新中..." %> </td>
 						<td> <%= link_to "戻る", user_path(current_user.id), class: 'btn-lg btn-primary' %> </td>
 					</tbody>
 			</table>
