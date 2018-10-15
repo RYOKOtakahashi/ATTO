@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		@item.user_id = current_user.id #userの存在しないitemができないよう、save前にuserを保存
 		@item.save
-		flash[:notice] = '登録しました'
+		flash.now[:notice] = "登録しました"
 		redirect_to user_path(current_user.id)
 	end
 
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 	def update
 		item = Item.find(params[:id])
 		item.update(item_params)
-		flash[:notice] = '更新しました'
+		flash.now[:notice] = "更新しました"
 		redirect_to user_path(current_user.id)
 	end
 

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 	  end
 	  unless @items.count == Item.all.count # itemsの数がitems.allから変わっているか確認
 		if @items.count == 0 # itemsの数が０の時
-		  @items = @user.items.all #@items = Item.all　にするとユーザーAの登録内容がユーザーBでログイン時にも出てしまう
+		  @items = @user.items.all #@items = Item.all にするとユーザーAの登録内容がユーザーBでログイン時にも出てしまう
 		  flash.now[:notice] = "登録されていません"
 		  render :action => :show and return  # showに戻り、renderをもう一度使いたいのでreturn
 		elsif @items.count > 0
