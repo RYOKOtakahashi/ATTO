@@ -1,10 +1,10 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
-    create_table :items do |t|
+    create_table :items, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
 
     	t.integer  :user_id, null: false
     	t.text  :item_name, null: false
-    	t.index :item_name
+    	# t.index :item_name
     	t.integer  :item_quantity, default: 1
 			t.integer  :price
     	t.integer  :weight

@@ -146,7 +146,8 @@
 									<td> <%= item.item_name %> </td>
 
 									<td>
-										<% if item.item_quantity.nil? %>
+										<%# if item.item_quantity.nil? %>
+										<% if item.item_quantity == nil %>
 											<%= "" %>
 										<% else %>
 											<%= number_with_delimiter(item.item_quantity.round(2)) %>
@@ -158,7 +159,8 @@
 									<td> <%= item.price_unit %> </td>
 
 									<td>
-										<% if item.price.nil? %>
+										<%# binding.pry %>
+										<% if item.price.nil? or item.item_quantity.nil? %>
 											<%= "" %>
 										<% else %>
 											<%= number_with_delimiter((item.price / item.item_quantity).round(2)) %>
@@ -168,7 +170,7 @@
 									<td> <%= number_with_delimiter(item.weight) %> </td>
 
 									<td>
-										<% if item.deadline.nil? %>
+										<% if item.deadline == nil %>
 											<%= "" %>
 										<% else %>
 											<%= item.deadline.strftime('%Y/%m/%-d (%a)') %>
